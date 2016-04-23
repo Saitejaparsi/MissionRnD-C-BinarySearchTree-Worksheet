@@ -60,23 +60,23 @@ int get_height(struct node *root){
 }
 
 int get_left_subtree_sum(struct node *root){
-	if (root == NULL)
+	if (root == NULL || root->left == NULL)
 		return 0;
 	int sum = 0;
 	struct node *r;
-	r = root->left;
-	for (r; r != NULL; r = r->left){
-		sum += r->data;
-	}
-	r = root->left->right;
-	for (r; r != NULL; r = r->right){
-		sum += r->data;
-	}
-	return sum;
+		r = root->left;
+		for (r; r != NULL; r = r->left){
+			sum += r->data;
+		}
+		r = root->left->right;
+		for (r; r != NULL; r = r->right){
+			sum += r->data;
+		}
+		return sum;
 }
 
 int get_right_subtree_sum(struct node *root){
-	if (root == NULL)
+	if (root == NULL||root->right==NULL)
 		return 0;
 	int sum = 0;
 	struct node *r;
